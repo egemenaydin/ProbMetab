@@ -112,16 +112,7 @@ export.class.table <- function(gibbsL=NULL, reactionM, molIon=NULL, probM=NULL, 
 	}
         linkURL <- lpattern(linkPattern)
 	fig <- paste("file://", getwd(), paste("/",filename,"_fig/",sep=""), sep="")
-	if(!is.null(molIon$cameraobj)) {
-		figidx <- c("")
-		coords <- gsub("(^\\d)","X\\1",rownames(molIon$cameraobj@xcmsSet@phenoData)) 
-		# experimental! Which set of characters????
-		coords <- gsub("-|\\,|~","\\.",coords)
-		coords <- gsub("\\s+","\\.",coords)
-		peaklist <- getPeaklist(molIon$cameraobj)
-    		rpeaklist <- peaklist[,c("mz","rt","isotopes","adduct","pcgroup")]
-	}
-	else {
+	if(!is.null(molIon$pos)) {
 		figidx <- c("","")
 		coordsP <- gsub("(^\\d)","X\\1",rownames(molIon$pos@xcmsSet@phenoData)) 
 		# experimental! Which set of characters????
